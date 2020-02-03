@@ -1,10 +1,11 @@
 <template>
 	<div class="homes">
+		
 		<nav-bar class="nav-bar">
 				<div slot="center" >剁手侠</div>
 		</nav-bar>
 		<van-pull-refresh v-model="isLoading" @refresh="onRefresh" success-text="刷新成功">
-			
+
 			<van-notice-bar class="notice-bar"
 			  text="美的电饭煲,微波炉,烧烤架限时折扣,机会难得,不容错过!"
 			  left-icon="volume-o"/>
@@ -14,6 +15,7 @@
 			  <van-swipe-item><img src="../../assets/img/swiper/3.png"></van-swipe-item>
 			  <van-swipe-item><img src="../../assets/img/swiper/4.png"></van-swipe-item>
 			</van-swipe>
+			
 			<quarantined>
 				<div slot="center">今日优选</div>
 			</quarantined>
@@ -21,7 +23,7 @@
 				<img src="./childcomps/images/star.png" />
 			</div>
 			<div class="card-father">
-				<card-jr class="cards"></card-jr>
+				<jr class="cards"></jr>
 			</div>
 			<quarantined>
 				<div slot="center">限时折扣</div>
@@ -29,7 +31,7 @@
 			<div class="quarantined-image">
 				<img src="./childcomps/images/star.png" />
 			</div>
-			<card-xs></card-xs>
+			<xs></xs>
 			<bottom></bottom>
 		</van-pull-refresh>
 		
@@ -39,22 +41,26 @@
 <script>
 	import NavBar from '../../components/common/navbar/NavBar.vue'
 	import Quarantined from './childcomps/Quarantined.vue'
-	import CardJr from './childcomps/card-jr.vue'
-	import CardXs from './childcomps/card-xs.vue'
+	import Jr from './childcomps/jr.vue'
+	import Xs from './childcomps/xs.vue'
 	import Bottom from './childcomps/bottom.vue'
+	
 	
 	export default{
 		name:"home",
 		components:{
 			NavBar,
 			Quarantined,
-			CardJr,
-			CardXs,
+			Jr,
+			Xs,
 			Bottom
 		},
+		
 		data() {
 		   return {
-		     isLoading: false
+		     isLoading: false,
+			 message:'',
+			 show:false
 		   }
 		 },
 		 methods: {
@@ -87,7 +93,7 @@
 	}
 	.homes{
 		padding-top: 44px;
-		height: 1500px;
+		height: 1430px;
 		position: relative;
 		padding-bottom: 49px;
 	}

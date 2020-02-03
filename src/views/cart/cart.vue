@@ -1,15 +1,24 @@
 <template>
 	<div id="cart">
-		<nav-bar class="nav-bar"><div slot="center">剁手侠</div></nav-bar>
-		<h2>购物车</h2>
+		<nav-bar class="nav-bar"><div slot="center">购物车</div></nav-bar>
+		
+		<cart-list></cart-list>
+		
+		<cart-bottom-bar></cart-bottom-bar>
+		
 	</div>
 </template>
 
 <script>
 	import NavBar from '../../components/common/navbar/NavBar.vue'
-		export default {
+	import CartList from './childcomps/cartList.vue'
+	import CartBottomBar from './childcomps/cartBottomBar.vue'
+	
+	export default {
 	  components: {
-			 NavBar
+			 NavBar,
+			 CartList,
+			 CartBottomBar
 	  }
 }
 </script>
@@ -37,4 +46,5 @@
 	 right: 0;
 	 top: 0;
 	}
+	
 </style>

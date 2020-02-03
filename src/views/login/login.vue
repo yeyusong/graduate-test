@@ -65,7 +65,7 @@
 				this.$router.back()
 			},
 			loginbuttonclick(){
-				console.log('注册成功')
+				this.$toast.show('注册失败')
 			}
 		}
 	}

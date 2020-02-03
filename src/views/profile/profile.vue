@@ -1,6 +1,6 @@
 <template>
   <div id="profile">
-    <nav-bar class="nav-bar"><div slot="center">剁手侠</div></nav-bar>
+    <nav-bar class="nav-bar"><div slot="center">我的信息</div></nav-bar>
 		<user-info></user-info>
 		<!--2.没有单独封装: 不同的地方太多, 需要传过多的参数-->
 		<section class="account">

@@ -1,36 +1,62 @@
 <template>
-	<div id="more">
-		<nav-bar class="nav-bar"><div slot="center">剁手侠</div></nav-bar>
-		<van-search placeholder="请输入搜索关键词" />
-		<div class="sy">
-			<div class="shiyan"></div>
-			<div class="shiyan"></div>
-			<div class="shiyan"></div>
-			<div class="shiyan"></div>
-			<div class="shiyan"></div>
-			<div class="shiyan"></div>
-			<div class="shiyan"></div>
+	<div>
+		<nav-bar class="nav-bar"><div slot="center">更多商品</div></nav-bar>
+		<div class="wrapper" ref="wrappers">
+			
+				<div class="more">
+					<van-search placeholder="请输入搜索关键词" />
+					<more-goods></more-goods>
+				</div>
+		</div>
+		<div class="backtop" @click="backtop" v-show="isbacktopshow">
+			<img src="../../assets/img/back.png" />
 		</div>
 	</div>
 </template>
 
 <script>
 	import NavBar from '../../components/common/navbar/NavBar.vue'
-		export default {
+	import MoreGoods from './childcomps/moregoods.vue'
+	import BScroll from 'better-scroll'
+	
+	export default {
+	  data(){
+		return{
+			scroll:null,
+			isbacktopshow:false
+		}  
+	  },
 	  components: {
-			 NavBar
+		NavBar,
+		MoreGoods
+	  },
+	  mounted() {
+	  	this.scroll = new BScroll(this.$refs.wrappers,{
+			probeType:3
+		}),
+		this.scroll.on('scroll',(pos)=>{
+				// console.log(pos)
+				const positionY = -pos.y
+				this.isbacktopshow = -pos.y > 500
+			})
+	  },
+	  methods:{
+		  backtop(){
+			 // x值，y值和时间
+			 this.scroll.scrollTo(0,20,1000)
+		  }
 	  }
-		}
+	}
 </script>
 
-<style>
-	#more {
+<style scoped="scoped">
+	.wrapper{
+		height: 100vh;
+	}
+	.more {
 	  padding-top: 44px;
-	  height:800px;
 	  position: relative;
 	  width: 100%;
-	
-		
 	
 	}
 	.nav-bar {
@@ -48,17 +74,18 @@
 	 right: 0;
 	 top: 0;
 	}
-	.shiyan{
+	.backtop{
+		width: 40px;
+		height: 40px;
 		
-		margin: 5px 5px 0px 5px;
-		height: 150px;
-		width: 150px;
-		background-color: red;
-		border-radius: 5%;
+		float: right;
+		
+		position: fixed;
+		right: 10px;
+		bottom: 55px;
 	}
-	.sy{
-		padding-left: 15px;
-		display: flex;
-		flex-wrap: wrap;
+	.backtop img{
+		width: 40px;
+		height: 40px;
 	}
 </style>
